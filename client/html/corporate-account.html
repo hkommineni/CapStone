@@ -1,0 +1,94 @@
+<template name="corporateAccount">
+	<head>
+		<title>Smart Clinic Account Page</title>
+		<link rel='stylesheet' href='../css/corporate-account.css'>
+
+		<!-- Natural Language Processing -->
+		<script src='https://unpkg.com/nlp_compromise@latest/builds/nlp_compromise.min.js'></script>
+
+		<script src='../js/awesomplete.min.js' async></script>
+		<script src='../js/menu-deploy.js' async></script>
+	</head>
+	<body>
+		{{> menu}}
+		<img class='menu-icon menu-button' src='../res/menu.svg'>
+
+		<div class='splash-banner'>
+			<div class='splash-filter'> </div>
+			<div class='splash-title'>{{companyName}}</div>
+		</div>
+		<div class='splash-padding'> </div>
+		<div class='account-content'>
+			<div class='left-column'>
+				<div class='search-bar'>
+					<form class='search-form'>
+						<input class='search-query' placeholder='Search for a Doctor'>
+					</form>
+					<img class='search-icon' src='../res/search.svg'>
+				</div>
+				<div class='active-agents-list'>
+					<div class='active-agents-title'>Available Doctors</div>
+					{{#each agents}}
+						<div class='agent'>
+							<img class='agent-photo' src='{{imageUrl}}'>
+							<div class='agent-information'>
+								<div class='agent-row'>
+									<span class='agent-name'>{{firstName}} {{lastName}}</span>
+									{{#if available}}
+										<span class='agent-availability'>Available</span>
+									{{else}}
+										<span class='agent-unavailability' id={{firstName}}>Estimated Wait Time: {{waitTime}} Minutes</span>
+									{{/if}}
+								</div>
+								<div class='agent-row'>
+									<img class='image' width='32px' src='../res/email.svg'>
+									<div class='agent-email'>{{email}}</div>
+								</div>
+								<div class='agent-row'>
+									<img class='image' width='32px' src='../res/phone.svg'>
+									<div class='agent-phone'>{{phoneNumber}}</div>
+								</div>
+								<div class='agent-row'>
+									<img class='image' width='32px' src='../res/video.svg'>
+									<div class='agent-video clickable-video' id='{{_id}}'>{{videoLink}}</div>
+								</div>
+							</div>
+						</div>
+					{{/each}}
+				</div>
+			</div>
+			<div class='right-column'>
+				<div class='video-feed'>
+					<div class='video-feed-title'>Videos by {{companyShortName}}</div>
+					{{#each liveVideos}}
+						<div class='video live-video clickable-video' id='{{_id}}'>
+							<img src='{{imageUrl}}' class='clickable-video' id='{{_id}}'/>
+							<div class='video-text text-live clickable-video' id='{{_id}}'>Live Now</div>
+						</div>
+						<div class='video-title'>{{videoName}}</div>
+					{{/each}}
+					{{#each nonLiveVideos}}
+						<div class='video clickable-video' id='{{_id}}'>
+							<img src='{{imageUrl}}' class="player-position clickable-video" id='{{_id}}'/>
+							<img src="../res/play.svg" class="play-button clickable-video" id='{{_id}}'/>
+						</div>
+						<div class='video-title'>{{videoName}}</div>
+					{{/each}}
+				</div>
+			</div>
+		</div>
+		<div class='footer'>Copyrights by Harish Kommineni</div>
+	</body>
+	<script>
+		var time = 300;
+		$('.menu-button').click(function() {
+			$('.full-screen-menu').fadeIn(time);
+			$('.menu-options').fadeIn(time);
+		});
+
+		$('.full-screen-menu').click(function() {
+			$('.full-screen-menu').fadeOut(time);
+			$('.menu-options').fadeOut(time);
+		});
+	</script>
+</template>

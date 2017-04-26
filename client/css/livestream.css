@@ -1,0 +1,143 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,700");
+.ls-header {
+  height: 75px;
+  width: 100%;
+  border-bottom: 2px solid #ddd;
+}
+.ls-menu-icon {
+  height: 32px;
+  width: 32px;
+  position: absolute;
+  top: 24px;
+  left: 32px;
+}
+.ls-menu-icon:hover {
+  cursor: pointer;
+}
+.ls-company {
+  position: absolute;
+  top: 16px;
+  right: 32px;
+  font-size: 32px;
+  font-family: 'Open Sans';
+}
+.ls-stream-title {
+  width: 100%;
+  text-align: center;
+  font-size: 48px;
+  font-family: 'Open Sans';
+  margin-bottom: 24px;
+}
+.ls-column-wrapper {
+  display: flex;
+}
+.ls-left-column {
+  flex-grow: 1;
+  padding: 24px;
+  box-sizing: border-box;
+}
+.ls-stream {
+  height: 600px;
+  width: 1200px;
+  background: #ddd;
+}
+.ls-stream-dashboard {
+  height: 90px;
+  width: 1200px;
+  background: #36454f;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 24px;
+  box-sizing: border-box;
+}
+.ls-stream-dashboard img {
+  margin: 0 12px;
+  height: 56px;
+}
+.ls-right-column {
+  flex-grow: 100;
+  padding: 24px;
+  box-sizing: border-box;
+}
+.ls-chat {
+  height: 600px;
+  background: #ddd;
+}
+.ls-chat-dashboard {
+  height: 90px;
+  background: #36454f;
+  padding: 0 18px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.ls-chat-box {
+  height: 60%;
+  width: 90%;
+  background: #fff;
+  font-family: 'Open Sans';
+  color: #36454f;
+  font-size: 18px;
+  padding: 8px;
+  box-sizing: border-box;
+}
+.ls-chat-button {
+  color: #fff;
+  font-family: 'Open Sans';
+  font-size: 18px;
+}
+.ls-chat-button:hover {
+  cursor: pointer;
+}
+.ls-notes-wrapper {
+  width: 100%;
+  margin-bottom: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 64px;
+}
+.ls-notes-title {
+  font-size: 48px;
+  font-family: 'Open Sans';
+  margin-bottom: 24px;
+}
+.ls-notes {
+  height: 500px;
+  width: 80%;
+}
+.froala-reactive-meteorized,
+.fr-wrapper {
+  height: 90%;
+  font-family: 'Open Sans';
+}
+.download-notes {
+  border: none;
+  outline: none;
+  color: #fff;
+  font-family: 'Open Sans';
+  background: #36454f;
+  padding: 12px 36px;
+  border-radius: 48px;
+  font-size: 24px;
+  margin: 24px 0;
+}
+.download-notes:hover {
+  cursor: pointer;
+}
+.uploadInput {
+  display: none;
+}
+.file-upload {
+  color: #fff;
+  font-family: 'Open Sans';
+  background: #36454f;
+  padding: 12px 36px;
+  border-radius: 48px;
+  font-size: 24px;
+}
+.file-upload:hover {
+  cursor: pointer;
+}

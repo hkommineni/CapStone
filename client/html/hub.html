@@ -1,0 +1,81 @@
+<template name="hub">
+	<head>
+		<title>Hub Support Page</title>
+		<link rel='stylesheet' href='../css/hub.css'>
+	</head>
+	<body>
+		<img class='menu-icon menu-button' src='../res/menu.svg'>
+		<div class='hub-background'> </div>
+		<div class='hub-banner'> </div>
+		<div class='hub-title'>Welcome to Smart Clinic Application</div>
+		<div class='hub-title-highlight'> </div>
+		<div class='hub-content'>
+			<div class='hub-search-bar'>
+				<form class='hub-search-form'>
+					<input class='hub-search-query' placeholder='Search for hospital to get help'>
+				</form>
+				<img class='hub-search-icon' src='../res/search.svg'>
+			</div>
+			<div class='card-wrapper'>
+				{{#each firstFourCompanies}}
+					<div class='card {{className}}' id='{{_id}}'>
+						<div class='card-filter' id='{{_id}}'> </div>
+						<div class='card-title' id='{{_id}}'>{{companyName}}</div>
+					</div>
+				{{/each}}
+			</div>
+			<div class='card-wrapper'>
+				{{#each secondFourCompanies}}
+					<div class='card {{className}}' id='{{_id}}'>
+						<div class='card-filter' id='{{_id}}'> </div>
+						<div class='card-title' id='{{_id}}'>{{companyName}}</div>
+					</div>
+				{{/each}}
+			</div>
+			<div class='encouragement'>Get the help you need in the smartest way.</div>
+			<div class='footer'>copyrights by Harish Kommineni</div>
+		</div>
+	</body>
+	<script>
+		$(document).ready(function() {
+			$('.hub-title').delay(500).fadeIn();
+			$('.hub-title-highlight').delay(1000).animate({'width': '750px'}, 800);
+
+			$('.card').hover(function() {
+				$(this).css({
+					'background-size': '175%',
+					'color': '#3299ff',
+					'transition': 'all 0.25s'
+				});
+			}, function() {
+				$(this).css({
+					'background-size': '150%',
+					'color': 'white',
+					'transition': 'all 0.25s'
+				});
+			});
+		});
+
+		$('.hub-search-icon').click(function() {
+			$('.hub-search-query').focus();
+		});
+
+		$(window).scroll(function () {
+		    var pix = $(document).scrollTop();
+		    pix = Math.pow(pix / 100, 2);
+			if (pix < 20)
+		    	$(".hub-background").css({"-webkit-filter": "blur("+pix+"px)","filter": "blur("+pix+"px)" })
+		});
+
+		var time = 300;
+		$('.menu-button').click(function() {
+			$('.full-screen-menu').fadeIn(time);
+			$('.menu-options').fadeIn(time);
+		});
+
+		$('.full-screen-menu').click(function() {
+			$('.full-screen-menu').fadeOut(time);
+			$('.menu-options').fadeOut(time);
+		});
+	</script>
+</template>

@@ -1,0 +1,79 @@
+<template name="livestream">
+	<head>
+		<title>CSG International Livestream</title>
+		<link rel='stylesheet' href='../css/livestream.css'>
+	</head>
+	<body>
+		<div class='ls-header'>
+			{{> menu}}
+			<img class='ls-menu-icon menu-button' src='../res/menu-black.svg'>
+			<div class='ls-company'>{{companyName}}</div>
+		</div>
+		<div>
+			<div class='ls-stream-title'>{{videoName}}</div>
+			<div  class='ls-column-wrapper'>
+				<div class='ls-left-column'>
+					<div class='ls-stream'>
+						{{#if agentLivestream}}
+ 							<iframe src="https://appear.in/{{agentId}}" width="100%" height="100%" frameborder="0"></iframe>
+ 						{{else}}
+ 							<iframe width="100%" height="100%" src="{{videoUrl}}?autoplay=1&rel=0&modestbranding=1&autohide=1&showinfo=0" frameborder="0" allowfullscreen autoplay></iframe>
+ 						{{/if}}
+					</div>
+				</div>
+				<div class='ls-right-column'>
+					<iframe src="https://www4.cbox.ws/box/?boxid=4319735&boxtag=diz1yN" width="90%" height="600" allowtransparency="yes" frameborder="0" marginheight="0" marginwidth="0" scrolling="auto"></iframe>
+				</div>
+			</div>
+		</div>
+		<div class='ls-notes-wrapper'>
+			<div class='ls-notes-title'>Notes</div>
+			{{#if agentLivestream}}
+				<form id='uploadFileForm'>
+					<input class='uploadInput' type='file' name='file' id='file'>
+					<label for='file' class='file-upload'>Upload file</label>
+				</form>
+			{{/if}}
+			<button class='download-notes' onclick='saveTextAsFile();'>Download Notes</button>
+			<div class='ls-notes'>
+				 {{> froalaReactive}}
+			</div>
+		</div>
+	</body>
+	<script>
+		function saveTextAsFile() {
+			var htmlText = $('froala-reactive-meteorized').froalaEditor('html.get');
+			//var htmlText = $('#documentEditField').froalaEditor('html.get');
+			var textFileAsBlob = new Blob([htmlText], {type:'text/plain'});
+			var fileNameToSaveAs = 'Notes.txt';
+
+			var downloadLink = document.createElement("a");
+			downloadLink.download = fileNameToSaveAs;
+			downloadLink.innerHTML = "Download File";
+			if (window.URL != null) {
+				// Chrome allows the link to be clicked
+				// without actually adding it to the DOM.
+				downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+			} else {
+				downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+				downloadLink.onclick = destroyClickedElement;
+				downloadLink.style.display = "none";
+				document.body.appendChild(downloadLink);
+			}
+
+			downloadLink.click();
+		}
+
+		var time = 300;
+		$('.menu-button').click(function() {
+			$('.full-screen-menu').fadeIn(time);
+			$('.menu-options').fadeIn(time);
+		});
+
+		$('.full-screen-menu').click(function() {
+			$('.full-screen-menu').fadeOut(time);
+			$('.menu-options').fadeOut(time);
+		});
+	</script>
+
+</template>

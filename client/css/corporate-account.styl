@@ -1,0 +1,287 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700')
+grey = #ddd
+dark-grey = #36454F
+
+set-position(t = auto, r = auto, b = auto, l = auto)
+	position absolute
+	if t != auto
+		top t
+	if r != auto
+		right r
+	if b != auto
+		bottom b
+	if l != auto
+		left l
+
+fix-position(t = auto, r = auto, b = auto, l = auto)
+	position fixed
+	if t != auto
+		top t
+	if r != auto
+		right r
+	if b != auto
+		bottom b
+	if l != auto
+		left l
+
+set-dimension(h = auto, w = auto)
+	if h != auto
+		height h
+	if w != auto
+		width w
+
+center(t = auto, r = auto, b = auto, l = auto)
+	set-position(t, r, b, l)
+	if l != auto
+		margin-right -50%
+		transform translate(-50%, -50%)
+	else if r != auto
+		transform translate(50%, -50%)
+
+.full-screen-menu
+	display none
+	set-dimension(100vh, 100vw)
+	fix-position(0, , , 0)
+	background #3299ff
+	opacity 0.9
+	z-index 100
+
+	&:hover
+		cursor pointer
+
+.menu-options
+	display none
+	color white
+	center(50%, , , 50%)
+	position fixed
+	font-family 'Open Sans'
+	font-size 48px
+	z-index 101
+	font-weight 300
+	text-align center
+	border 1px solid white
+	padding 0 64px
+
+.menu-option
+	margin 48px 0
+
+	&:hover
+		cursor pointer
+
+html, body
+	margin 0
+	padding 0
+	overflow-x hidden
+
+.menu-icon
+	set-position(32px, , , 32px)
+	set-dimension(32px, )
+	z-index 1
+
+	&:hover
+		cursor pointer
+
+.splash-banner
+	set-dimension(500px, 100vw)
+	position relative
+	background grey
+	background url('../res/meeting.jpg') no-repeat center center
+	background-size cover
+
+.splash-filter
+	set-position(0, , , 0)
+	set-dimension(100%, 100%)
+	background rgba(0, 0, 0, 0.2)
+
+.splash-title
+	center(50%, , , 50%)
+	font-size 72px
+	font-family 'Open Sans', sans
+	color white
+	font-weight 700
+
+.splash-padding
+	set-dimension(25px, 100vw)
+	background #36454f
+
+.account-content
+	display flex
+
+.left-column
+	flex-grow 1
+	background white
+	padding 48px
+	display flex
+	align-items center
+	flex-direction column
+
+.search-bar
+	set-dimension(64px, 80%)
+	border-radius 32px
+	background white
+	border 3px solid grey
+	padding 12px
+	box-sizing border-box
+	position relative
+	margin-bottom 16px
+	display flex
+	justify-content flex-end
+
+	&:hover
+		cursor text
+
+.search-form
+	set-dimension(, 90%)
+
+.search-query
+	set-dimension(100%, 100%)
+	border none
+	outline none
+	text-align right
+	font-size 24px
+
+	&::-webkit-input-placeholder
+		color grey
+
+.search-icon
+	set-dimension(, 64px)
+
+.active-agents-list
+	padding 48px
+	set-dimension(, 90%)
+	display flex
+	align-items center
+	flex-direction column
+
+.active-agents-title
+	font-size 48px
+	font-family 'Open Sans', sans
+
+.agent
+	set-dimension(200px, 100%)
+	border 2px solid grey
+	background white
+	margin 16px 0
+	display flex
+
+.agent-photo
+	set-dimension(100%, )
+
+	&:hover
+		cursor pointer
+
+.agent-information
+	padding 16px 32px
+	flex-grow 1
+	font-family 'Open Sans', sans
+
+.agent-row
+	set-dimension(44px, 100%)
+	display flex
+	align-items center
+
+	&:hover
+		cursor pointer
+
+	& .image
+		margin 0 16px
+
+	& div:hover
+		text-decoration underline
+
+.agent-name
+	font-size 32px
+	font-weight 700
+	margin-right 16px
+
+.agent-availability, .agent-unavailability
+	padding 4px 24px
+	color white
+	border-radius 32px
+
+	&:hover
+		cursor pointer
+
+.agent-availability
+	background green
+
+.agent-unavailability
+	background red
+
+.right-column
+	flex-grow 1
+	padding 48px 24px
+	box-sizing border-box
+
+.video-feed
+	padding 24px 0
+	border 2px solid grey
+	display flex
+	align-items center
+	flex-direction column
+
+.video-feed-title
+	font-family 'Open Sans'
+	font-size 48px
+
+.video
+	set-dimension(265px, 65%)
+	background grey
+	margin 24px 0 12px 0
+	position relative
+	overflow-x hidden
+	overflow-y hidden
+	border 2px solid grey
+
+	&:hover
+		cursor pointer
+
+.live-video
+	set-dimension(300px, 75%)
+
+	& img
+		set-dimension(100%, )
+
+.video-text
+	center(50%, , , 50%)
+	font-family 'Open Sans'
+	font-size 40px
+	text-align center
+	font-weight bold
+	max-width 50%
+
+.video-title
+	font-family 'Open Sans'
+	font-size 24px
+	margin-bottom 24px
+
+.text-live
+	color white
+	text-shadow 0 0 4px rgba(0, 0, 0, 0.5)
+	transition all 0.25s
+
+	&:hover
+		font-size 42px
+		text-shadow 0 0 8px rgba(0, 0, 0, 0.5)
+
+.player-position
+	margin-left 0px
+
+.play-button
+	center(50%, , , 50%)
+	set-dimension(100px, 100px)
+	z-index 10
+	transition all 0.25s
+
+	&:hover
+		set-dimension(110px, 110px)
+
+.footer
+	set-dimension(200px, 100vw)
+	display flex
+	align-items center
+	justify-content center
+	font-size 24px
+	color white
+	font-family 'Open Sans'
+	background dark-grey
